@@ -47,5 +47,5 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
 # Expose port
 EXPOSE 8080
 
-# Start PHP-FPM and ensure storage link is created
-CMD ["sh", "-c", "php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8080"]
+# Start diagnostic and then the server
+CMD ["sh", "-c", "php check-env.php && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8080"]
