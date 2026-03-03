@@ -28,6 +28,8 @@ class ExportSQLiteToMySQL extends Command
     {
         $this->info('Generating MySQL-compatible dump...');
 
+        config(['database.connections.sqlite.database' => database_path('database.sqlite')]);
+
         $tables = DB::connection('sqlite')
             ->select("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'");
 
