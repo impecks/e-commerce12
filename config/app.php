@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Vendike'),
+    'debug_force' => true, // Added for visibility
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
