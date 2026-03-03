@@ -37,11 +37,8 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
     && npm install \
     && npm run build
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
 # Expose port
 EXPOSE 8080
 
-# Start PHP-FPM
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+# Start PHP-FPM and ensure storage link is created
+CMD ["sh", "-c", "php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8080"]
